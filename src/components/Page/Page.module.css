@@ -7,8 +7,7 @@
 
 .PageContentWrapper {
 	position: relative;
-	top: var(--header-height);
-	padding: 20px;
+	padding: 2.5rem;
 }
 
 .PageContent {

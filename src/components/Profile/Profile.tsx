@@ -1,21 +1,21 @@
 import { Navigate, redirect } from 'react-router-dom'
 import { supaClient } from '../../utils/supaClient'
-import styles from './Welcome.module.css'
+import styles from './Profile.module.css'
 import { useForm } from 'react-hook-form'
 import { useContext, useState } from 'react'
 import { UserContext } from '../../App'
+import { Page } from '../Page/Page'
 
 const signOut = async () => {
 	const { error } = await supaClient.auth.signOut()
 	// TODO: handle error
 }
 
-
 type FormValues = {
-	username: string
+	full_name: string
 }
 
-export const Welcome = () => {
+export const Profile = () => {
 	const user = useContext(UserContext)
 	const [saveSuccessful, setSaveSuccessful] = useState(false)
 	const {
@@ -24,15 +24,15 @@ export const Welcome = () => {
 		formState: { errors },
 	} = useForm<FormValues>()
 
-	const onSubmit = ({ username }: FormValues) => {
-		console.log(username)
+	const onSubmit = ({ full_name }: FormValues) => {
+		console.log(full_name)
 
 		supaClient
 			.from('user_profiles')
 			.insert([
 				{
 					user_id: user.session?.user?.id ?? '',
-					username,
+					full_name,
 				},
 			])
 			.then(({ error }) => {
@@ -46,19 +46,21 @@ export const Welcome = () => {
 	}
 
 	return (
-		<div className={styles.Welcome}>
-			<h1>QR</h1>
-			{saveSuccessful && (<p>successful save</p>)}
+		<Page>
+			<div className={styles.Welcome}>
+				<h1>QR</h1>
+				{saveSuccessful && <p>successful save</p>}
 
-			<form onSubmit={handleSubmit(onSubmit)}>
-				<input
-					{...register('username', { required: true })}
-					type='text'
-					placeholder='Username'
-				/>
+				<form onSubmit={handleSubmit(onSubmit)}>
+					<input
+						{...register('full_name', { required: true })}
+						type='text'
+						placeholder='Name'
+					/>
 
-				<input type='submit' />
-			</form>
-		</div>
+					<input type='submit' />
+				</form>
+			</div>
+		</Page>
 	)
 }

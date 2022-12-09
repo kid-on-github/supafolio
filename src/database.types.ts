@@ -12,15 +12,15 @@ export interface Database {
       user_profiles: {
         Row: {
           user_id: string
-          username: string
+          full_name: string
         }
         Insert: {
           user_id: string
-          username: string
+          full_name: string
         }
         Update: {
           user_id?: string
-          username?: string
+          full_name?: string
         }
       }
     }
