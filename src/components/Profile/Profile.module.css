@@ -1,7 +1,4 @@
 @import '../../vars.css';
 
-.Welcome {
-	background: var(--background);
-    min-height: 100vh;
-    padding: 2rem;
+.Page {
 }

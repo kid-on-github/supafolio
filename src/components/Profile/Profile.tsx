@@ -1,10 +1,10 @@
-import { Navigate, redirect } from 'react-router-dom'
 import { supaClient } from '../../utils/supaClient'
 import styles from './Profile.module.css'
 import { useForm } from 'react-hook-form'
 import { useContext, useState } from 'react'
 import { UserContext } from '../../App'
 import { Page } from '../Page/Page'
+import QrCode from './QrCode'
 
 const signOut = async () => {
 	const { error } = await supaClient.auth.signOut()
@@ -47,8 +47,8 @@ export const Profile = () => {
 
 	return (
 		<Page>
-			<div className={styles.Welcome}>
-				<h1>QR</h1>
+			<div className={styles.Page}>
+				<QrCode url='http://localhost.com/profile' />
 				{saveSuccessful && <p>successful save</p>}
 
 				<form onSubmit={handleSubmit(onSubmit)}>
