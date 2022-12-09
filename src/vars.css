@@ -5,10 +5,12 @@
 
 h1 {
 	font-size: 36px;
+	text-transform: uppercase;
 }
 
 p {
 	font-size: 20px;
+	font-weight: 500;
 }
 
 label {

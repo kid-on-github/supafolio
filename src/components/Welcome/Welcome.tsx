@@ -10,26 +10,6 @@ const signOut = async () => {
 	// TODO: handle error
 }
 
-export const welcomeLoader = async () => {
-	const {
-		data: { user },
-	} = await supaClient.auth.getUser()
-
-	if (!user) {
-		return redirect('/auth')
-	}
-
-	const { data } = await supaClient
-		.from('user_profiles')
-		.select('*')
-		.eq('user_id', user?.id)
-		.single()
-
-	if (data?.username) {
-		console.log('username', data?.username)
-		return redirect('/events')
-	}
-}
 
 type FormValues = {
 	username: string
@@ -65,12 +45,10 @@ export const Welcome = () => {
 			})
 	}
 
-	return saveSuccessful ? (
-		<Navigate to='/events' />
-	) : (
+	return (
 		<div className={styles.Welcome}>
-			<h1>Welcome to supatest!</h1>
-			<p>Start editing to see some magic happen!</p>
+			<h1>QR</h1>
+			{saveSuccessful && (<p>successful save</p>)}
 
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<input

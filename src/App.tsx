@@ -1,11 +1,9 @@
 import './App.css'
 import { Home } from './components/Home/Home'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
-import { AuthPage } from './components/AuthPage/AuthPage'
 import { UserInfo, useSession } from './utils/useSession'
 import { createContext, FunctionComponent, ReactNode } from 'react'
 import { Welcome, welcomeLoader } from './components/Welcome/Welcome'
-import { Events } from './components/Events/Events'
 
 export const UserContext = createContext<UserInfo>({
 	session: null,
@@ -14,6 +12,7 @@ export const UserContext = createContext<UserInfo>({
 
 const Page = () => {
 	const userInfo = useSession()
+	console.log(userInfo)
 
 	return (
 		<UserContext.Provider value={userInfo}>
@@ -32,17 +31,8 @@ const router = createBrowserRouter([
 				element: <Home />,
 			},
 			{
-				path: 'auth',
-				element: <AuthPage />,
-			},
-			{
 				path: 'welcome',
 				element: <Welcome />,
-				loader: welcomeLoader,
-			},
-			{
-				path: 'events',
-				element: <Events />,
 			},
 		],
 	},
