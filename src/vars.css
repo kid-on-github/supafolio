@@ -34,4 +34,5 @@ input{
 button, input[type=submit]{
 	color:white;
 	background:black;
+	text-transform: uppercase;
 }

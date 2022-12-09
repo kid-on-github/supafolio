@@ -79,7 +79,7 @@ export const Profile = () => {
 						placeholder='Name'
 					/>
 
-					<input type='submit' />
+					<input type='submit' value='save'/>
 				</form>
 			</div>
 		</Page>
