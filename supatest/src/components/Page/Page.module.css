@@ -1,0 +1,17 @@
+@import '../../vars.css';
+
+.Page {
+	background-color: var(--background);
+	min-height: 100vh;
+}
+
+.PageContentWrapper {
+	position: relative;
+	top: var(--header-height);
+	padding: 20px;
+}
+
+.PageContent {
+	max-width: var(--page-width);
+	margin: 0 auto;
+}
