@@ -1,0 +1,16 @@
+:root {
+	--page-width: 320px;
+	--grey: #EDEDED;
+}
+
+h1 {
+	font-size: 36px;
+}
+
+p {
+	font-size: 20px;
+}
+
+label {
+	font-size: 16px;
+}

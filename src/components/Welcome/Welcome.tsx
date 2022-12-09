@@ -5,6 +5,11 @@ import { useForm } from 'react-hook-form'
 import { useContext, useState } from 'react'
 import { UserContext } from '../../App'
 
+const signOut = async () => {
+	const { error } = await supaClient.auth.signOut()
+	// TODO: handle error
+}
+
 export const welcomeLoader = async () => {
 	const {
 		data: { user },
