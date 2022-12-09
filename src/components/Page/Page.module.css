@@ -3,14 +3,7 @@
 .Page {
 	background-color: var(--background);
 	min-height: 100vh;
-}
-
-.PageContentWrapper {
-	position: relative;
-	padding: 2.5rem;
-}
-
-.PageContent {
 	max-width: var(--page-width);
-	margin: 0 auto;
+	padding: 2.5rem;
+	margin: auto
 }
