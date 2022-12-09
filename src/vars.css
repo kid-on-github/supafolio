@@ -19,11 +19,19 @@ label {
 	font-size: 16px;
 }
 
-input:not([type='submit']) {
-	background-color: var(--grey);
+input, button{
 	border: 0;
 	border-radius: 8px;
 	padding: 0.5rem;
 	font-weight: bold;
 	font-size: 1rem;
+}
+
+input{
+	background-color: var(--grey);
+}
+
+button, input[type=submit]{
+	color:white;
+	background:black;
 }

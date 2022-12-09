@@ -1,7 +1,7 @@
 import { supaClient } from '../../utils/supaClient'
 import styles from './Profile.module.css'
 import { useForm } from 'react-hook-form'
-import { useContext, useState } from 'react'
+import { FunctionComponent, useContext, useState } from 'react'
 import { UserContext } from '../../App'
 import { Page } from '../Page/Page'
 import QrCode from './QrCode'
@@ -14,6 +14,8 @@ const signOut = async () => {
 type FormValues = {
 	full_name: string
 }
+
+type RegisterKey = 'full_name'
 
 export const Profile = () => {
 	const user = useContext(UserContext)
@@ -45,15 +47,34 @@ export const Profile = () => {
 			})
 	}
 
+	const InputItem: FunctionComponent<{
+		label: string
+		registerKey: RegisterKey
+		type: string
+		placeholder: string
+	}> = ({ label, registerKey, type, placeholder }) => {
+		return (
+			<label>
+				<span className={styles.LabelText}>{label}</span>
+				<input
+					{...register(registerKey)}
+					type={type}
+					placeholder={placeholder}
+				/>
+			</label>
+		)
+	}
+
 	return (
 		<Page>
-			<div className={styles.Page}>
+			<div className={styles.FlexSpacing}>
 				<QrCode url='http://localhost.com/profile' />
 				{saveSuccessful && <p>successful save</p>}
 
-				<form onSubmit={handleSubmit(onSubmit)}>
-					<input
-						{...register('full_name', { required: true })}
+				<form onSubmit={handleSubmit(onSubmit)} className={styles.FlexSpacing}>
+					<InputItem
+						label='Name'
+						registerKey='full_name'
 						type='text'
 						placeholder='Name'
 					/>

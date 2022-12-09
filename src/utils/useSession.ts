@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { supaClient } from './supaClient'
 
 export interface UserProfile {
-	username: string
+	full_name: string
 	avatar_url?: string
 }
 
@@ -57,7 +57,8 @@ export function useSession(): UserInfo {
 			setUserInfo({ ...userInfo, profile: data?.[0] })
 		}
 		else{
-			navigate('/welcome')
+			// TODO: submit initial profile (just email)
+			navigate('/profile')
 		}
 		return supaClient
 			.channel('public:user_profiles')

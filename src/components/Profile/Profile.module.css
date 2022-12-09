@@ -1,4 +1,17 @@
 @import '../../vars.css';
 
-.Page {
+.FlexSpacing{
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+}
+
+.FlexSpacing *{
+    width: 100%;
+}
+
+.LabelText{
+    font-size: 16px;
+    padding: 0.5rem 0.5rem;
+    font-weight: bold;
 }
