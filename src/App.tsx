@@ -7,7 +7,6 @@ import { Profile } from './components/Profile/Profile'
 
 export const UserContext = createContext<UserInfo>({
 	session: null,
-	profile: null,
 })
 
 const UserInfoProvider = () => {
