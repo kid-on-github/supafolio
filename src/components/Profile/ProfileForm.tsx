@@ -32,11 +32,36 @@ const getProfileInfo = async (id: string) => {
 	return data?.[0] ?? null
 }
 
+const submitInitialProfileData = async (id: string, email: string) => {
+	supaClient
+		.from('user_profiles')
+		.insert([
+			{
+				user_id: id,
+				full_name: '',
+				email,
+				cell: '',
+				company: '',
+				company_website: '',
+				linkedin: '',
+				instagram: '',
+				facebook: '',
+				twitter: '',
+			},
+		])
+		.then(({ error }) => {
+			console.log('test', error)
+			if (error) {
+				console.log(error)
+			}
+		})
+}
+
 const ProfileForm = () => {
 	const user = useContext(UserContext)
 	const [saveSuccessful, setSaveSuccessful] = useState(false)
 
-	const { id } = user.session?.user ?? {}
+	const { id, email = '' } = user.session?.user ?? {}
 
 	const [defaultValues, setDefaultValues] = useState<FormValues | {}>({})
 
@@ -44,7 +69,13 @@ const ProfileForm = () => {
 		if (id) {
 			const populateDefaults = async () => {
 				const { user_id, ...defaults } = (await getProfileInfo(id)) ?? {}
-				setDefaultValues(defaults)
+
+				// if the user has no profile data, create it
+				if (Object.keys(defaults).length === 0) {
+					submitInitialProfileData(id, email)
+				}
+
+				setDefaultValues({ email, ...defaults })
 			}
 			populateDefaults()
 		}
@@ -67,12 +98,10 @@ const ProfileForm = () => {
 		if (id) {
 			supaClient
 				.from('user_profiles')
-				.insert([
-					{
-						user_id: id,
-						...values,
-					},
-				])
+				.update({
+					user_id: id,
+					...values,
+				})
 				.then(({ error }) => {
 					console.log('test', error)
 					if (error) {
