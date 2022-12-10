@@ -1,5 +1,11 @@
 import { useForm } from 'react-hook-form'
-import { FunctionComponent, useContext, useState } from 'react'
+import {
+	FunctionComponent,
+	useContext,
+	useEffect,
+	useMemo,
+	useState,
+} from 'react'
 import { supaClient } from '../../utils/supaClient'
 import { UserContext } from '../../App'
 import styles from './Profile.module.css'
@@ -17,27 +23,54 @@ type RegisterKey =
 	| 'facebook'
 	| 'twitter'
 
+const getProfileInfo = async (id: string) => {
+	const { data } = await supaClient
+		.from('user_profiles')
+		.select('*')
+		.filter('user_id', 'eq', id)
+
+	return data?.[0] ?? null
+}
+
 const ProfileForm = () => {
 	const user = useContext(UserContext)
 	const [saveSuccessful, setSaveSuccessful] = useState(false)
+
+	const { id } = user.session?.user ?? {}
+
+	const [defaultValues, setDefaultValues] = useState<FormValues | {}>({})
+
+	useEffect(() => {
+		if (id) {
+			const populateDefaults = async () => {
+				const { user_id, ...defaults } = (await getProfileInfo(id)) ?? {}
+				setDefaultValues(defaults)
+			}
+			populateDefaults()
+		}
+	}, [user])
+
 	const {
 		register,
 		handleSubmit,
+		reset,
 		formState: { errors },
-	} = useForm<FormValues>()
+	} = useForm<FormValues>({
+		defaultValues: useMemo(() => defaultValues, [defaultValues]),
+	})
+
+	useEffect(() => {
+		reset(defaultValues)
+	}, [defaultValues])
 
 	const onSubmit = (values: FormValues) => {
-
-		const { id } = user.session?.user ?? {}
-        console.log('id', id)
-
 		if (id) {
 			supaClient
 				.from('user_profiles')
 				.insert([
 					{
 						user_id: id,
-						...values
+						...values,
 					},
 				])
 				.then(({ error }) => {
