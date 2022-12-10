@@ -1,8 +1,17 @@
 create table user_profiles (
     user_id uuid primary key references auth.users (id) not null,
     full_name text not null,
-    CONSTRAINT proper_full_name CHECK (full_name ~* '^[a-zA-Z]+$'),
-    CONSTRAINT full_name_length CHECK (char_length(full_name) > 3 and char_length(full_name) <15)
+    email text not null,
+    cell text not null,
+    company text not null,
+    company_website text not null,
+    linkedin text not null,
+    instagram text not null,
+    facebook text not null,
+    twitter text not null
+    
+    -- CONSTRAINT proper_full_name CHECK (full_name ~* '^[a-zA-Z]+$'),
+    -- CONSTRAINT full_name_length CHECK (char_length(full_name) > 3 and char_length(full_name) <15)
 );
 
 alter table user_profiles enable row level security;

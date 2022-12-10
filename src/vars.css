@@ -1,6 +1,7 @@
 :root {
 	--page-width: 320px;
 	--grey: #ededed;
+	--red: #EA3449
 }
 
 h1 {
@@ -35,4 +36,5 @@ button, input[type=submit]{
 	color:white;
 	background:black;
 	text-transform: uppercase;
+	cursor: pointer;
 }

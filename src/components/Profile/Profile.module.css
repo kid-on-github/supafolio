@@ -15,3 +15,12 @@
     padding: 0.5rem 0.5rem;
     font-weight: bold;
 }
+
+.FlexSpacing hr{
+    margin: 1rem 0;
+    border: 1px solid black;
+}
+
+.LogOut{
+    background: var(--red);
+}
