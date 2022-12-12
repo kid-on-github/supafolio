@@ -44,7 +44,6 @@ const submitInitialProfileData = async (id: string, email: string) => {
 			},
 		])
 		.then(({ error }) => {
-			console.log('test', error)
 			if (error) {
 				console.log(error)
 			}
@@ -97,7 +96,6 @@ const ProfileForm = () => {
 					...values,
 				})
 				.then(({ error }) => {
-					console.log('test', error)
 					if (error) {
 						console.log(error)
 					} else {

@@ -21,7 +21,6 @@ const ProfileEdit = () => {
 	// TODO: figure out a better auth redirect solution
 	const [redirect, setRedirect] = useState(false)
 	supaClient.auth.getSession().then(({ data: { session } }) => {
-		console.log('xxx', session?.user?.id)
 		if (!session?.user?.id) {
 			setRedirect(true)
 		}

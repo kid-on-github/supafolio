@@ -3,7 +3,6 @@ import { supaClient } from '../../utils/supaClient'
 import styles from './MagicLinkForm.module.css'
 
 async function signInWithEmail(email: string) {
-	console.log('email', email)
 	const { data, error } = await supaClient.auth.signInWithOtp({
 		email,
 	})
