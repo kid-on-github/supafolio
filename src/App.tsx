@@ -3,9 +3,9 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import { UserInfo, useSession } from './utils/useSession'
 import { createContext } from 'react'
 import Home from './components/Home/Home'
-import { Page } from './components/Page/Page'
 import ProfileEdit from './components/Profile/ProfileEdit/ProfileEdit'
 import ProfilePreview from './components/Profile/ProfilePreview/ProfilePreview'
+import Profile from './components/Profile/Profile'
 
 export const UserContext = createContext<UserInfo>({
 	session: null,
@@ -33,11 +33,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'profile',
-				element: (
-					<Page>
-						<Outlet />
-					</Page>
-				),
+				element: <Profile />,
 				children: [
 					{
 						path: '',
