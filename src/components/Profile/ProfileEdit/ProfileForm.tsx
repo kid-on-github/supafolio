@@ -15,6 +15,7 @@ type FormValues = Record<RegisterKey, string>
 
 type RegisterKey =
 	| 'full_name'
+	| 'title'
 	| 'email'
 	| 'cell'
 	| 'company'
@@ -31,6 +32,7 @@ const submitInitialProfileData = async (id: string, email: string) => {
 			{
 				user_id: id,
 				full_name: '',
+				title: '',
 				email,
 				cell: '',
 				company: '',
@@ -123,6 +125,7 @@ const ProfileForm = () => {
 			<InputItem label='Name' registerKey='full_name' type='text' />
 			<InputItem label='Email' registerKey='email' type='text' />
 			<InputItem label='Cell' registerKey='cell' type='text' />
+			<InputItem label='Title' registerKey='title' type='text' />
 			<InputItem label='Company' registerKey='company' type='text' />
 			<InputItem
 				label='Company Website'

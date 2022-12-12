@@ -11,6 +11,7 @@ const ProfilePreview = () => {
 
 	const [dataToRender, setDataToRender] = useState({
 		full_name: '',
+		title: '',
 		email: '',
 		cell: '',
 		company: '',
@@ -31,6 +32,7 @@ const ProfilePreview = () => {
 
 	const {
 		full_name,
+		title,
 		email,
 		cell,
 		company,
@@ -49,6 +51,8 @@ const ProfilePreview = () => {
 
 			<div className={styles.ContactInfo}>
 				{full_name && <h3>{full_name}</h3>}
+
+				<ConditionalText text={title} />
 
 				{company && company_website ? (
 					<ConditionalLink label={company} url={company_website} />

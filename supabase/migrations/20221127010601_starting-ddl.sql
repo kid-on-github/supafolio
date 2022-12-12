@@ -1,6 +1,7 @@
 create table user_profiles (
     user_id uuid primary key references auth.users (id) not null,
     full_name text not null,
+    title text not null,
     email text not null,
     cell text not null,
     company text not null,
