@@ -1,26 +1,53 @@
 @import '../../vars.css';
 
-.FlexSpacing{
-    display: flex;
-    flex-flow: column nowrap;
-    gap: 1rem;
+.FlexSpacing {
+	display: flex;
+	flex-flow: column nowrap;
+	gap: 1rem;
 }
 
-.FlexSpacing *{
-    width: 100%;
+.FlexSpacing * {
+	width: 100%;
 }
 
-.LabelText{
-    font-size: 16px;
-    padding: 0.5rem 0.5rem;
-    font-weight: bold;
+.LabelText {
+	font-size: 13px;
+	padding: 3px.5rem;
+	font-weight: 500;
+	display: block;
 }
 
-.FlexSpacing hr{
-    margin: 1rem 0;
-    border: 1px solid black;
+.FlexSpacing hr {
+	margin: 1rem 0;
+	border: 1px solid var(--black);
 }
 
-.LogOut{
-    background: var(--red);
+.LogOut {
+	background: var(--red);
+}
+
+.IconLink {
+	background-color: var(--black);
+	padding: 0.5rem;
+	border-radius: 8px;
+	aspect-ratio: 1/1;
+	display: flex;
+}
+
+.IconGrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	gap: 0.5rem;
+	margin: 1.25rem 0;
+}
+
+.ContactInfo {
+	display: flex;
+	flex-flow: column nowrap;
+	gap: 0.25rem 0 0 0;
+}
+
+.IconLink > img {
+	height: 70%;
+	align-self: center;
 }

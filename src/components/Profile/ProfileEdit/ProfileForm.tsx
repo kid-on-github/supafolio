@@ -6,9 +6,10 @@ import {
 	useMemo,
 	useState,
 } from 'react'
-import { supaClient } from '../../utils/supaClient'
-import { UserContext } from '../../App'
-import styles from './Profile.module.css'
+import { supaClient } from '../../../utils/supaClient'
+import { UserContext } from '../../../App'
+import styles from '../Profile.module.css'
+import { getProfileInfo } from '../utils'
 
 type FormValues = Record<RegisterKey, string>
 
@@ -22,15 +23,6 @@ type RegisterKey =
 	| 'instagram'
 	| 'facebook'
 	| 'twitter'
-
-const getProfileInfo = async (id: string) => {
-	const { data } = await supaClient
-		.from('user_profiles')
-		.select('*')
-		.filter('user_id', 'eq', id)
-
-	return data?.[0] ?? null
-}
 
 const submitInitialProfileData = async (id: string, email: string) => {
 	supaClient

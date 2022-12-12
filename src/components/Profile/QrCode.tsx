@@ -1,15 +1,15 @@
 import QRCodeStyling from 'qr-code-styling'
 import { FunctionComponent, useEffect, useRef, useState } from 'react'
 
-const QrCode: FunctionComponent<{ url: string }> = ({url=''}) => {
+const QrCode: FunctionComponent<{ url: string }> = ({ url = '' }) => {
 	const qrCode = new QRCodeStyling({
 		width: 240,
 		height: 240,
 		dotsOptions: {
-			color: '#000',
+			color: '#181818',
 			type: 'rounded',
 		},
-    data:url
+		data: url,
 	})
 
 	const ref = useRef(null)

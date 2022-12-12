@@ -1,9 +1,11 @@
 import './App.css'
-import { Home } from './components/Home/Home'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import { UserInfo, useSession } from './utils/useSession'
 import { createContext } from 'react'
-import { Profile } from './components/Profile/Profile'
+import Home from './components/Home/Home'
+import { Page } from './components/Page/Page'
+import ProfileEdit from './components/Profile/ProfileEdit/ProfileEdit'
+import ProfilePreview from './components/Profile/ProfilePreview/ProfilePreview'
 
 export const UserContext = createContext<UserInfo>({
 	session: null,
@@ -31,7 +33,21 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'profile',
-				element: <Profile />,
+				element: (
+					<Page>
+						<Outlet />
+					</Page>
+				),
+				children: [
+					{
+						path: '',
+						element: <ProfileEdit />,
+					},
+					{
+						path: ':id',
+						element: <ProfilePreview />,
+					},
+				],
 			},
 		],
 	},

@@ -2,8 +2,7 @@ import MagicLinkForm from '../MagicLinkForm/MagicLinkForm'
 import { Page } from '../Page/Page'
 import styles from './Home.module.css'
 
-export const Home = () => {
-
+const Home = () => {
 	return (
 		<Page>
 			<div className={styles.Home}>
@@ -14,3 +13,5 @@ export const Home = () => {
 		</Page>
 	)
 }
+
+export default Home
