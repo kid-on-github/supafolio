@@ -1,5 +1,6 @@
 import QRCodeStyling from 'qr-code-styling'
-import { FunctionComponent, useEffect, useRef, useState } from 'react'
+import styles from './QrCode.module.css'
+import { FunctionComponent, useEffect, useRef } from 'react'
 
 const QrCode: FunctionComponent<{ url: string }> = ({ url = '' }) => {
 	const qrCode = new QRCodeStyling({
@@ -18,7 +19,7 @@ const QrCode: FunctionComponent<{ url: string }> = ({ url = '' }) => {
 		qrCode.append(ref.current ?? undefined)
 	}, [])
 
-	return <div ref={ref} />
+	return <div className={styles.QrCode} ref={ref} />
 }
 
 export default QrCode

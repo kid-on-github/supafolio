@@ -2,7 +2,7 @@ import { FunctionComponent, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Icon from '../icons/Icons'
 import styles from '../Profile.module.css'
-import QrCode from '../QrCode'
+import QrCode from '../QrCode/QrCode'
 import { getProfileInfo } from '../utils'
 import { baseURL } from '../utils'
 
