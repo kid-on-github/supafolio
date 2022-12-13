@@ -6,6 +6,39 @@ import QrCode from '../QrCode/QrCode'
 import { getProfileInfo } from '../utils'
 import { baseURL } from '../utils'
 
+// TODO: update type and improve this function
+const buildVCard = (data: any, previewLink: string) => {
+	const {
+		full_name,
+		title,
+		email,
+		cell,
+		company,
+		company_website,
+		linkedin,
+		twitter,
+		instagram,
+		facebook,
+	} = data
+
+	let vCard = `BEGIN:VCARD\nVERSION:3.0\n`
+
+	full_name && (vCard += `N:${full_name}\n`)
+	title && (vCard += `TITLE:${title}\n`)
+	email && (vCard += `EMAIL:${email}\n`)
+	cell && (vCard += `TEL;TYPE=CELL:${cell}\n`)
+	company && (vCard += `ORG:${company}\n`)
+	company_website && (vCard += `URL;type=WORK:${company_website}\n`)
+	linkedin && (vCard += `X-SOCIALPROFILE;TYPE=linkedin:${linkedin}\n`)
+	twitter && (vCard += `X-SOCIALPROFILE;TYPE=twitter:${twitter}\n`)
+	instagram && (vCard += `X-SOCIALPROFILE;TYPE=instagram:${instagram}\n`)
+	facebook && (vCard += `X-SOCIALPROFILE;TYPE=facebook:${facebook}\n`)
+	vCard += `URL:${previewLink}\n`
+	vCard += `END:VCARD`
+
+	return 'data:text/plain;charset=utf-8,' + encodeURIComponent(vCard)
+}
+
 const ProfilePreview = () => {
 	const { id = '' } = useParams()
 
@@ -69,6 +102,9 @@ const ProfilePreview = () => {
 				<ConditionalIconLink icon='facebook' url={facebook} />
 				<ConditionalIconLink icon='twitter' url={twitter} />
 			</div>
+			<a download={`${full_name.split(' ').join('-') ?? 'contact'}.vcf`} href={buildVCard(dataToRender, previewLink)}>
+				Save Contact
+			</a>
 		</div>
 	)
 }
