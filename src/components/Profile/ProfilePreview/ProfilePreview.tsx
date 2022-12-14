@@ -29,10 +29,10 @@ const buildVCard = (data: any, previewLink: string) => {
 	cell && (vCard += `TEL;TYPE=CELL:${cell}\n`)
 	company && (vCard += `ORG:${company}\n`)
 	company_website && (vCard += `URL;type=WORK:${company_website}\n`)
-	linkedin && (vCard += `X-SOCIALPROFILE;TYPE=linkedin:${linkedin}\n`)
-	twitter && (vCard += `X-SOCIALPROFILE;TYPE=twitter:${twitter}\n`)
-	instagram && (vCard += `X-SOCIALPROFILE;TYPE=instagram:${instagram}\n`)
-	facebook && (vCard += `X-SOCIALPROFILE;TYPE=facebook:${facebook}\n`)
+	// linkedin && (vCard += `X-SOCIALPROFILE;TYPE=linkedin:${linkedin}\n`)
+	// twitter && (vCard += `X-SOCIALPROFILE;TYPE=twitter:${twitter}\n`)
+	// instagram && (vCard += `X-SOCIALPROFILE;TYPE=instagram:${instagram}\n`)
+	// facebook && (vCard += `X-SOCIALPROFILE;TYPE=facebook:${facebook}\n`)
 	vCard += `URL:${previewLink}\n`
 	vCard += `END:VCARD`
 
