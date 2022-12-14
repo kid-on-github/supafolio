@@ -1,10 +1,29 @@
-.MagicLinkForm{
-    display: flex;
-    flex-direction: row nowrap;
-    gap: 1rem;
+.MagicLinkForm {
+	display: flex;
+	flex-direction: row nowrap;
+	gap: 1rem;
 }
 
-.MagicLinkForm > button{
-    display: flex;
-    align-items: center;
+.MagicLinkForm > button {
+	display: flex;
+	align-items: center;
+}
+
+.MagicLinkForm > input {
+	flex: 1;
+	display: inline-block;
+	min-width: 0;
+	width: auto;
+}
+
+.EmailSentMsg {
+	background: var(--black);
+	color: white;
+	padding: 1rem;
+	border-radius: 8px;
+}
+
+.EmailSentMsg > h4 {
+	margin: 0;
+	font-size: 20px;
 }
