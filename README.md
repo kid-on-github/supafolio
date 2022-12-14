@@ -43,3 +43,27 @@ secret = ""
 ```
 3. Add the following url as the callback url in the Google Cloud Platform console:
 http://localhost:54321/auth/v1/callback
+
+
+
+### Deploy to Production
+Link the project to the Supabase project:
+> Note: your project ref can be found in the supabase url https://app.supabase.com/project/<project ref>
+```
+npx supabase link --project-ref=<project ref> --password=<password>
+```
+
+See what migrations will be applied:
+```
+npx supabase db push --dry-run
+```
+
+Apply migrations to the production database:
+```
+npx supabase db push
+```
+
+Pull the latest database migrations from production to your local machine:
+```
+npx supabase db remote commit
+```
