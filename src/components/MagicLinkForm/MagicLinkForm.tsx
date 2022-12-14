@@ -22,7 +22,9 @@ const MagicLinkForm = () => {
 				placeholder='John@example.com'
 				onChange={({ target: { value } }) => setEmail(value)}
 			/>
-			<button onClick={() => signInWithEmail(email)}>Send Magic Link</button>
+			<button onClick={() => signInWithEmail(email)}>
+				<span className='material-symbols-outlined'>send</span>
+			</button>
 		</div>
 	)
 }

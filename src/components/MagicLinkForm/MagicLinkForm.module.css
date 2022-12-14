@@ -1,3 +1,10 @@
 .MagicLinkForm{
-    
+    display: flex;
+    flex-direction: row nowrap;
+    gap: 1rem;
+}
+
+.MagicLinkForm > button{
+    display: flex;
+    align-items: center;
 }
