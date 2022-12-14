@@ -95,6 +95,7 @@ const ProfileForm = () => {
 					user_id: id,
 					...values,
 				})
+				.eq('user_id', id)
 				.then(({ error }) => {
 					if (error) {
 						console.log(error)
