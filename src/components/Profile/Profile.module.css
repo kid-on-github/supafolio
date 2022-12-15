@@ -23,10 +23,6 @@
 	background: var(--black);
 }
 
-.LogOut {
-	background: var(--red);
-}
-
 .IconLink {
 	background-color: var(--black);
 	padding: 0.5rem;
@@ -64,4 +60,15 @@
 	display: flex;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
 		rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.SaveContactButton {
+	background: var(--black);
+	color: white;
+	padding: 0.5rem 1rem;
+	border-radius: 8px;
+	text-decoration: none;
+	font-weight: 700;
+	font-size: 1rem;
+	text-transform: uppercase;
 }

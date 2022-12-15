@@ -102,9 +102,15 @@ const ProfilePreview = () => {
 				<ConditionalIconLink icon='facebook' url={facebook} />
 				<ConditionalIconLink icon='twitter' url={twitter} />
 			</div>
-			<a download={`${full_name.split(' ').join('-') ?? 'contact'}.vcf`} href={buildVCard(dataToRender, previewLink)}>
-				Save Contact
-			</a>
+			<div>
+				<a
+					className={styles.SaveContactButton}
+					download={`${full_name.split(' ').join('-') ?? 'contact'}.vcf`}
+					href={buildVCard(dataToRender, previewLink)}
+				>
+					Save Contact
+				</a>
+			</div>
 		</div>
 	)
 }

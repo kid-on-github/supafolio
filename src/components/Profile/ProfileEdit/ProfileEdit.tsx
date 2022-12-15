@@ -34,9 +34,7 @@ const ProfileEdit = () => {
 				<QrCode url={previewLink} />
 				<ProfileForm />
 				<hr />
-				<button className={styles.LogOut} onClick={() => signOut()}>
-					Log Out
-				</button>
+				<button onClick={() => signOut()}>Log Out</button>
 			</div>
 		) : null
 	}
