@@ -1,3 +1,15 @@
+## Intro
+I built this MVP in a week to learn more about [Supabase](https://supabase.com/) (an open source Firebase alternative).
+This project was based on a smart business card concept that I pitched at a Startup Weekend (my team took 2nd place).
+Since it was built in 7 days, it's super minimal and a tad rushed. But it's fully functional and deployed to production, so I call that a win for now :)
+
+Link to the website:
+https://mvpplaceholder.com/
+
+Link to my digital business card:
+https://mvpplaceholder.com/profile/e3b0b104-dadc-47ed-9ea7-3fd526e06344
+
+---
 Run React:
 
 ```
@@ -31,18 +43,6 @@ Generate types for databases:
 # while supabase is running
 sudo yarn supabase gen types typescript --local > ./src/database.types.ts
 ```
-
-Enabling Google Social Auth Locally:
-1. Follow the steps [here](https://supabase.com/docs/learn/auth-deep-dive/auth-google-oauth)
-2. Add the following to `supabase/config.toml`:
-```
-[auth.external.google]
-enabled = true
-client_id = ""
-secret = ""
-```
-3. Add the following url as the callback url in the Google Cloud Platform console:
-http://localhost:54321/auth/v1/callback
 
 
 
